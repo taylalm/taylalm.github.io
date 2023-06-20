@@ -1,0 +1,119 @@
+import socket
+import time
+
+print('♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥ Welcome to the BunnyCTF challenge! ♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥♥')
+print()
+print("""
+                                .:-:::-                         ...                      
+                                -:-:    +                    ::::.-=+                     
+                               +--=.    .+                :-:   .-==*                     
+                              =====      +-:::--------:--:    .-===+-                     
+                           ..:*====      :+-----------=:     :====+:                      
+                       .::----++===.      *---------==     :====++-::.                    
+                   .::---------*===:      *--------=-    .-====+-------:.                 
+                .:--------------*===.....:*-------==   .-====++-----------:               
+              .:----------------=*+=-::...:::..:::-..::====++---------------:             
+            .--------------------++:                 .:-==*-------------------:.          
+          .:-------------------==.                     .:::==-------------------:         
+        .:--------------------=.                         ::::+--------------------.       
+       :--------------------==                            ::::+=-------------------:      
+      :---------------------+                             .::::*---------------------.    
+     :---------------------+:                              ::::-+---------------------.   
+   .-----------------------*                               :::::*----------------------.  
+   :-----------------------+     :+==              .-**=   :::::+-----------------------. 
+  :-----------------------=:    :*###.             +*###=..::::-=*----------------------: 
+ :-----------------------+: ....=*#*+     ::.      :*###+:.::::::=*------------==--------.
+ --------===-------------+ :----:.       ..:..         .:-----::::*----------------------:
+.--------===-------------+ .::::..                    .:---=--:::=+-----------------------
+:------------------------==                             .::--:::=+------------------------
+:-------------------------=+:.                             ..::-*-------------------------
+-------------------------+: .:::::::::....................::::::-+------------------------
+:-----------------------+.     ::-======-==----==-==+===---:....:-+-----------------------
+:----------------------+.          :=+=====++==--===+-.         .:-+----------------------
+.---------------------+.             =+=======-======.          .::=+--------------------:
+ :-------------------=-    ..   ...:=++=============+=-:......::::::+--------------------.
+  :------------------*     :--====+*++===============++++====-:...::-*------------------. 
+   :-----------------+       ....:*++================+++-....    ..::*-----------------.  
+    :----------------+            -*+================++:.         .::+----------------.   
+     .---------------+             :+*+============++=:           .::+--------------:     
+       :-------------*..            .-+*+========++=:.           ..::*---------==-:       
+         ::::::::::::==:.             .-+*+++++++=:.             .::==:::::::::::         
+                     :*--::.             .-++++-.             ..::-=*:                    
+                    =-=*=---::..           ....           ..:::---=+-=:                   
+                    :==+**=----:...::::::::....:::::::::....----=*+++-                    
+                        :+***++.    :=-----------------.    =+****=:                
+""")     
+print()
+time.sleep(1)
+print('Bunny: Hoppity-hop! Well, look who\'s bouncing in! Greetings, my fellow cutie-patootie piggy bunny!\n')
+time.sleep(3)
+print('       Oh my floppy ears and fluffy tail, I must confess, you\'re beyond super-duper cute, just like me!\n')
+time.sleep(3)
+print('       I\'m Béo Bi the Bunny Rabbit, the fluffy guardian of my master Sasha the Ducky\'s precious treasure!\n')
+time.sleep(3)
+print('       My master told me to give it to you...\n')
+time.sleep(3)
+print('       But hold your hopping paws, my dear friend!\n')
+time.sleep(3)
+print('       Before I unveil this enchanted treasure, I must ensure that you possess the perfect blend of smarts, cuteness, and worthiness, just like me!\n')
+time.sleep(3)
+print('       Let us embark on a whimsical adventure filled with giggles and carrot chomps!\n')
+time.sleep(3)
+print('       So to get access to the precious treasure, you\'ll need to tell me a special bunny code!\n')
+time.sleep(3)
+print('       And to test your bunny brilliance, I\'ve hopped around and encoded that bunny code (a string named \'carrot\') using this enchanting algorithm written in Python:\n')
+time.sleep(5)
+print('       \'\'.join([chr((ord(carrot[i]) << 8) + ord(carrot[i + 1])) for i in range(0, len(carrot), 2)])\n')
+time.sleep(5)
+print('       Now behold the encoded magical bunny code: \'扵湮祃呆筣䡵䭟浕湇彳ㅮ䡟湨㑴弲ㅟ捨啩㽟湨㑫弳浟戳彂楟洴灟摪瑟搳彴桵の䝟湈畟挰慮彨㌰彳潣畴敨橨橨橽\'\n')
+time.sleep(5)
+print('       I understand that this quest might ruffle your whiskers a bit...\n')
+time.sleep(3)
+print('       Fear not, for when the going gets tough, don\'t hesitate to seek assistance from your fluffy companions or the snuggly powers of ChatGPT!\n')
+time.sleep(3)
+print('       We\'re here to sprinkle cuteness and wisdom upon your bunny ears, ready to hop to your rescue with a carrot-filled smile!\n')
+time.sleep(3)
+print('       Now, my inquisitive fluffster, it\'s time for a grand adventure of your own!\n')
+time.sleep(3)
+print('       Put your bunny brain to work, embark on a scholarly hop through the vast realm of research, and unlock the secrets of this puzzling riddle.\n')
+time.sleep(3)
+print('       Once you\'ve cracked the code, hop it back to me, and I\'ll perform the ultimate fluff inspection to see if you\'re truly a worthy fluffy bunny destined for treasure glory!\n')
+time.sleep(3)
+print('       Goodluck! Hippity-hop! nom nom...\n')
+time.sleep(3)
+print()
+print()
+
+server_address = ('meddict-vinuni.com', 1337)
+endLoop = False
+
+while True:
+    try:
+        bunnyCode = input('Insert your bunny code here (Press Ctrl+D to stop):  ')
+    except EOFError:
+        endLoop = True
+
+    print()
+
+    if endLoop:
+        break
+
+    bunnyCode += '\n'
+
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.connect(server_address)
+    sock.sendall(bunnyCode.encode())
+
+    buff = b''
+    buffer_size = 1024
+
+    while True:
+        data = sock.recv(buffer_size)
+
+        if not data:
+            break
+
+        buff += data
+
+    print(buff.decode(), end="");
+    sock.close()
