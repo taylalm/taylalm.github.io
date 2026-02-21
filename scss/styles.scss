@@ -519,7 +519,6 @@ no-particles-js {
     ----- 5. About Styles -----
     ---------------------------
 */
-
 #about {
   padding: 40px 15px;
   border-bottom: 1px solid $border;
@@ -528,21 +527,61 @@ no-particles-js {
     color: $heading;
   }
 
+  /* One source of truth for About typography */
+  $about-font-size: 1.1em;
+  $about-line-height: 1.6;
+
+  /* Paragraphs */
   p {
     color: $text;
-    margin: 0 0 0 30px;
-    font-size: 1.1em;
+    font-size: $about-font-size;
+    line-height: $about-line-height;
     text-align: justify;
+    margin: 0 0 16px 30px;
   }
-  // img {
-  //     margin-left: 130px
-  // }
 
-  // h3 {
-  //     margin-left: 130px;
-  // }
+  /* List should match paragraph typography exactly */
+  ul.about-text {
+    color: $text;
+    font-size: $about-font-size;
+    line-height: $about-line-height;
+    text-align: justify;
+
+    margin: 0 0 16px 30px;
+    padding-left: 22px;
+    list-style-position: outside;
+  }
+
+  /* Force li + any inner text to match paragraphs */
+  ul.about-text li,
+  ul.about-text li * {
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  ul.about-text li {
+    margin-bottom: 14px;
+  }
+
+  /* Bold text: keep same size, slightly lighter weight */
+  ul.about-text b,
+  ul.about-text strong {
+    color: inherit;
+    font-weight: 600;
+  }
+
+  /* Links */
+  a {
+    color: inherit;
+    text-decoration: underline;
+  }
+
+  a:hover,
+  a:focus {
+    opacity: 0.85;
+  }
 }
-
 /*
     --------------------------------
     ----- 6. Experience Styles -----
